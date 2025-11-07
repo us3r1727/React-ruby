@@ -13,12 +13,12 @@ module Api
         render json: { data: User.all }, status: :ok
       end
 
-      # GET /api/v1/profile (usuário autenticado)
+      # GET /api/v1/profile
       def profile
         render json: { data: current_user }, status: :ok
       end
 
-      # POST /api/v1/register (registro público)
+      # POST /api/v1/register
       def create
         user = User.new(user_params)
         user.role = 'user' 
@@ -32,7 +32,7 @@ module Api
 
       # PUT /api/v1/users/:id
       def update
-        #  Admin pode mudar tudo (incluindo role)
+        #  Admin 
         if current_user.admin?
           if @user.update(admin_update_params)
             render json: { data: @user }, status: :ok
@@ -40,7 +40,7 @@ module Api
             render json: { errors: @user.errors.full_messages }, status: :unprocessable_entity
           end
 
-        # 👤 Usuário comum só pode editar seus próprios dados básicos
+        #  User
         else
           if @user.update(user_update_params)
             render json: { data: @user }, status: :ok
@@ -50,7 +50,7 @@ module Api
         end
       end
 
-      # DELETE /api/v1/users/:id (somente admin ou o próprio usuário)
+      # DELETE /api/v1/users/:id 
       def destroy
         @user.destroy
         head :no_content
@@ -62,17 +62,17 @@ module Api
         @user = User.find(params[:id])
       end
 
-      # usado para criação (sempre role = 'user')
+      # User creation
       def user_params
         params.require(:user).permit(:full_name, :email, :password, :avatar_url)
       end
 
-      # usado para updates normais (usuário comum)
+      # user update
       def user_update_params
         params.require(:user).permit(:full_name, :email, :password, :avatar_url)
       end
 
-      # usado apenas por admin (pode alterar role)
+      # Admin update
       def admin_update_params
         params.require(:user).permit(:full_name, :email, :password, :avatar_url, :role)
       end
