@@ -7,18 +7,18 @@ module Api
 
       rescue_from ActiveRecord::RecordNotFound, with: :not_found
 
-      # GET /api/v1/users (somente admin)
+      # GET /api/v1/users (admin)
       def index
         authorize_admin!
         render json: { data: User.all }, status: :ok
       end
 
-      # GET /api/v1/profile
+      # GET /api/v1/profile (user)
       def profile
         render json: { data: current_user }, status: :ok
       end
 
-      # POST /api/v1/register
+      # POST /api/v1/register (pub)
       def create
         user = User.new(user_params)
         user.role = 'user' 
@@ -30,7 +30,7 @@ module Api
         end
       end
 
-      # PUT /api/v1/users/:id
+      # PUT /api/v1/users/:id (user/admin)
       def update
         #  Admin 
         if current_user.admin?

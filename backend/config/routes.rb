@@ -7,15 +7,10 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      # Rotas públicas
       post 'login', to: 'auth#login'
       delete 'logout', to: 'auth#logout'
-      post 'register', to: 'users#create' # Registro público
-
-      # Rota protegida (somente usuário autenticado)
+      post 'register', to: 'users#create'
       get 'profile', to: 'users#profile'
-
-      # CRUD administrativo de usuários
       resources :users, except: [:create]
     end
   end
