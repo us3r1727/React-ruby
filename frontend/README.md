@@ -3,7 +3,6 @@
 
 Prerequisites
     Node.js 16+ installed
-
     npm package manager
 
 ## Installation and Configuration
