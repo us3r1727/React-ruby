@@ -2,8 +2,8 @@
 ## Rails Backend API
 
 Prerequisites
-    Node.js 16+ installed,
-    npm package manager
+    .Node.js 16+ installed
+    .npm package manager
 
 ## Installation and Configuration
 
