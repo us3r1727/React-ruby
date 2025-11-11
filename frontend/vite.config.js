@@ -9,7 +9,7 @@ export default defineConfig(({ mode }) => {
       host: true,  // Adicione esta linha
       proxy: {
         "/api": {
-          target: env.VITE_API_URL || "http://backend:3000",  // Mude para 'backend'
+          target: env.VITE_API_URL || "http://backend:3000" ,
           changeOrigin: true,
           secure: false,
         },
