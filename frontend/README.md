@@ -1,69 +1,52 @@
-Frontend Application
+1. 
+cd backend
 
-
-🚀 Tech Stack
-
-    Framework: React 18
-
-    Build Tool: Vite
-
-    Styling: CSS3
-
-    Package Manager: npm
-
-
-🛠️ Installation & Setup
-Prerequisites
-
-    Node.js (version 14 or higher)
-
-    npm or yarn
-
-1. Install Dependencies
+2. Instalar dependências
 bash
 
-cd frontend
-npm install
+bundle install
 
-2. Environment Configuration
+3. Configurar banco de dados
 
-The application is configured to connect to the backend at:
-env
+Edite o arquivo config/database.yml com as configurações do seu PostgreSQL:
+yaml
 
-VITE_ART_URL=http://localhost:3000
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  host: localhost
+  port: 5432
+  username: seu_usuario
+  password: sua_senha
 
-3. Start Development Server
+development:
+  <<: *default
+  database: nome_do_app_development
 
+test:
+  <<: *default
+  database: nome_do_app_test
 
-npm run dev
+production:
+  <<: *default
+  database: nome_do_app_production
 
-The application will be available at http://localhost:5173 (or the next available port).
-📝 Available Scripts
-
-    npm run dev - Start development server with hot reload
-
-    npm run build - Build for production
-
-    npm run preview - Preview production build locally
-
-    npm run lint - Run ESLint (if configured)
-
-🌐 Development
-
-The frontend runs on http://localhost:5173 and communicates with the backend API at http://localhost:3000.
-🔧 Build for Production
+4. Gerar chave mestra
 bash
 
-npm run build
+rails secret
 
-The built files will be generated in the dist/ directory, ready for deployment.
-⚙️ Configuration
-Vite Configuration
+Copie a chave gerada e adicione ao arquivo config/master.key.
+5. Criar e migrar banco de dados
+bash
 
-    Development server port: 5173
+rails db:create
+rails db:migrate
 
-    Hot module replacement enabled
+6. Executar servidor
+bash
 
-    Optimized for React
+rails s
 
-
+A aplicação estará disponível em http://localhost:3000
