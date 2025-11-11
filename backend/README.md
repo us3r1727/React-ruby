@@ -26,20 +26,19 @@ Prerequisites
 Edit the config/database.yml file with your PostgreSQL credentials:
 
 ```bash
-  development:
-    adapter: postgresql
-    encoding: unicode
-    database: your_app_development
-    pool: 5
-    username: your_postgres_username
-    password: your_postgres_password
-    host: localhost
-    port: 5432
+    default: &default
+      adapter: postgresql
+      encoding: unicode
+      host: localhost
+      username: us3r1723
+      password: senha123
+      pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 ```
 4. Generate the application master key
 ```bash
   rails secret
 ```
+put it on you .env
 5. Create the database
 
 ```bash
