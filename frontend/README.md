@@ -1,5 +1,5 @@
 
-## Rails Backend API
+## React Frontend
 
 Prerequisites
     
