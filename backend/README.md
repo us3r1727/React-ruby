@@ -1,24 +1,39 @@
-# README
+1. Requirements
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Ruby >= 3.4
 
-Things you may want to cover:
+Rails >= 8.1
 
-* Ruby version
+PostgreSQL
 
-* System dependencies
+Bundler (gem install bundler)
 
-* Configuration
+Git
 
-* Database creation
+2. Clone repository
+ 
+ git clone <your-repo-url>
+ 
+ cd backend
 
-* Database initialization
+3. Install dependencies
 
-* How to run the test suite
+ bundle install
 
-* Services (job queues, cache servers, search engines, etc.)
+4. Configure environment
 
-* Deployment instructions
+ cp .env.example .env
 
-* ...
+ Edit config/database.yml
+
+5. generate master key 
+ rails secret
+
+
+5. Create and migrate database
+ rails db:create
+ rails db:migrate
+
+7. Run server
+
+ rails s

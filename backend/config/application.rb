@@ -22,6 +22,16 @@ module Backend
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 8.1
+    config.middleware.insert_before 0, Rack::Cors do
+      allow do
+       origins 'http://localhost:5173'  # frontend
+
+         resource '*',
+            headers: :any,
+            expose: ['Authorization'],
+            methods: [:get, :post, :put, :patch, :delete, :options, :head]
+       end
+    end
 
     # Please, add to the `ignore` list any other `lib` subdirectories that do
     # not contain `.rb` files, or that should not be reloaded or eager loaded.
