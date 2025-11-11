@@ -1,46 +1,47 @@
-version: "3.9"
+version: '3.9'
 
 services:
   postgres:
-    image: postgres:15
-    container_name: postgres
-    restart: always
+    image: postgres:13
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: myapp_development
+      POSTGRES_DB: app_development
+      POSTGRES_USER: us3r1723
+      POSTGRES_PASSWORD: password
     ports:
       - "5432:5432"
     volumes:
-      - pgdata:/var/lib/postgresql/data
+      - postgres_data:/var/lib/postgresql/data
 
   backend:
     build:
-      context: ./backend
+      context: .
       dockerfile: Dockerfile
-    container_name: backend
-    restart: always
-    environment:
-      RAILS_ENV: development
-      DATABASE_URL: postgres://postgres:postgres@postgres:5432/myapp_development
-      DEVISE_JWT_SECRET_KEY: your_generated_secret_here
+      target: backend-runtime
     depends_on:
       - postgres
+    environment:
+      DATABASE_URL: postgresql://us3r1723:password@postgres:5432/app_development
+      RAILS_ENV: development
     ports:
       - "3000:3000"
+    volumes:
+      - ./backend:/app
+    tty: true
 
   frontend:
     build:
-      context: ./frontend
+      context: .
       dockerfile: Dockerfile
-    container_name: frontend
-    restart: always
-    environment:
-      NODE_ENV: development
+      target: frontend-runtime
     depends_on:
       - backend
     ports:
       - "5173:5173"
+    volumes:
+      - ./frontend:/app
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+      - VITE_API_URL=http://backend:3000
 
 volumes:
-  pgdata:
+  postgres_data:

@@ -6,9 +6,10 @@ export default defineConfig(({ mode }) => {
   return {
     plugins: [react()],
     server: {
+      host: true,  // Adicione esta linha
       proxy: {
         "/api": {
-          target: env.VITE_API_URL || "http://localhost:3000",
+          target: env.VITE_API_URL || "http://backend:3000",  // Mude para 'backend'
           changeOrigin: true,
           secure: false,
         },
