@@ -11,23 +11,6 @@ Frontend Application
 
     Package Manager: npm
 
-📁 Project Structure
-
-
-frontend/
-├── src/
-│   ├── assets/           # Static assets (images, icons)
-│   ├── components/       # React components
-│   ├── services/         # API services
-│   │   └── api.js       # API configuration and calls
-│   ├── styles/          # CSS stylesheets
-│   ├── App.jsx          # Main App component
-│   ├── App.css          # App styles
-│   ├── index.css        # Global styles
-│   └── main.jsx         # Application entry point
-├── public/              # Public assets
-├── package.json         # Dependencies and scripts
-└── vite.config.js      # Vite configuration
 
 🛠️ Installation & Setup
 Prerequisites
