@@ -73,10 +73,13 @@ Docker version error
 
 7. Manual Run
   You need to have a Postgres database running.
+  
   intructions here
 
-  Backend : https://github.com/us3r1727/React-ruby/tree/main/backend
-  Frontend : https://github.com/us3r1727/React-ruby/tree/main/frontend
+    Backend : https://github.com/us3r1727/React-ruby/tree/main/backend
+
+
+    Frontend : https://github.com/us3r1727/React-ruby/tree/main/frontend
 
 8. Included Technologies
 
