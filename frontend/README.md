@@ -1,52 +1,42 @@
-1. 
-cd backend
 
-2. Instalar dependências
-bash
+## Rails Backend API
 
-bundle install
+Prerequisites
+    Node.js 16+ installed
 
-3. Configurar banco de dados
+    npm package manager
 
-Edite o arquivo config/database.yml com as configurações do seu PostgreSQL:
-yaml
+## Installation and Configuration
 
-default: &default
-  adapter: postgresql
-  encoding: unicode
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  host: localhost
-  port: 5432
-  username: seu_usuario
-  password: sua_senha
+1. Access the project directory
+```bash
+  cd frontend
+```
+2. Install dependencies
+```bash
+  npm install
 
-development:
-  <<: *default
-  database: nome_do_app_development
+```
+3. Create a .env 
+```bash
+  cp .env.example .env
+```
+edit the .env if nessesary
 
-test:
-  <<: *default
-  database: nome_do_app_test
+4. Run in development mode
+```bash
+  npm run dev
+```
+The project will be available at: http://localhost:5173
 
-production:
-  <<: *default
-  database: nome_do_app_production
+5. Build for production
 
-4. Gerar chave mestra
-bash
+```bash
+  npm run build
+```
 
-rails secret
+6. Preview production build
 
-Copie a chave gerada e adicione ao arquivo config/master.key.
-5. Criar e migrar banco de dados
-bash
-
-rails db:create
-rails db:migrate
-
-6. Executar servidor
-bash
-
-rails s
-
-A aplicação estará disponível em http://localhost:3000
+```bash
+  npm run preview
+```
