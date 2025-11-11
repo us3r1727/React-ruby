@@ -72,6 +72,8 @@ Docker version error
 ```
 
 7. Manual Run
+
+
   You need to have a Postgres database running.
   
   intructions here
