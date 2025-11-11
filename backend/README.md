@@ -1,51 +1,56 @@
-cd backend
 
-2. Instalar dependências
-bash
+## Rails Backend API
 
-bundle install
+Prerequisites
+    Ruby >= 3.4
 
-3. Configurar banco de dados
+    Rails >= 8.1
 
-Edite o arquivo config/database.yml com as configurações do seu PostgreSQL:
-yaml
+    PostgreSQL
 
-default: &default
-  adapter: postgresql
-  encoding: unicode
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  host: localhost
-  port: 5432
-  username: seu_usuario
-  password: sua_senha
+    Bundler (gem install bundler)
 
-development:
-  <<: *default
-  database: nome_do_app_development
+    Git
 
-test:
-  <<: *default
-  database: nome_do_app_test
+## Installation and Configuration
 
-production:
-  <<: *default
-  database: nome_do_app_production
+1. Access the project directory
+```bash
+  cd backend
+```
+2. Install Ruby dependencies
+```bash
+  bundle install
+```
+3. Configure the database
+Edit the config/database.yml file with your PostgreSQL credentials:
 
-4. Gerar chave mestra
-bash
+```bash
+  development:
+    adapter: postgresql
+    encoding: unicode
+    database: your_app_development
+    pool: 5
+    username: your_postgres_username
+    password: your_postgres_password
+    host: localhost
+    port: 5432
+```
+4. Generate the application master key
+```bash
+  rails secret
+```
+5. Create the database
 
-rails secret
+```bash
+  rails db:create
+```
+6. Run migration
 
-Copie a chave gerada e adicione ao arquivo config/master.key.
-5. Criar e migrar banco de dados
-bash
-
-rails db:create
-rails db:migrate
-
-6. Executar servidor
-bash
-
-rails s
-
-A aplicação estará disponível em http://localhost:3000
+```bash
+  rails db:migrate
+```
+7. Start the server
+```bash
+  rails s
+```
