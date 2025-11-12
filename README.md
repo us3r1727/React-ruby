@@ -35,7 +35,7 @@ after editing go back
 
 3. Run the application
 ```bash
-  sudo docker-compose up
+  sudo docker-compose build --no-cache
 ```
 The project will be available at: http://localhost:5173
 
