@@ -41,11 +41,11 @@ The project will be available at: http://localhost:5173
 
 4. Admin User (Created Automatically)
 
-    Email: 
+Email: 
 ```bash
     admin@example.com
 ```
-    Password: 
+Password: 
 ```bash
     admin123
 ```
