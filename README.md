@@ -4,7 +4,7 @@
 Prerequisites
     
     Docker: version 20.10+
-    Docker Compose: version 1.29+
+    Docker Compose: version v2.31.0
 
 ## Installation and Configuration
 
